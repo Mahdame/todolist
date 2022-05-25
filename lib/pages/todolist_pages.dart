@@ -42,9 +42,9 @@ class _TodolistPageState extends State<TodolistPage> {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Task ${todo.title} removed successfully!'),
+        content: Text('Tarefa \'${todo.title}\' removida com sucesso!'),
         action: SnackBarAction(
-          label: 'Undo',
+          label: 'DESFAZER',
           onPressed: () {
             setState(() {
               todos.insert(deletedTodoPos!, deletedTodo!);
@@ -67,21 +67,21 @@ class _TodolistPageState extends State<TodolistPage> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text('Delete all tasks!'),
-              content: Text('This action is not reversible! Are you sure?'),
+              title: Text('Deletar todas as tarefas!'),
+              content: Text('Esta ação não é reversível! Tem certeza?'),
               actions: [
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('Cancel')),
+                    child: Text('Cancelar')),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                     deleteAllTodos();
                   },
                   child: Text(
-                    'YES!',
+                    'SIM!',
                     style: TextStyle(color: Colors.red),
                   ),
                 ),
@@ -121,7 +121,7 @@ class _TodolistPageState extends State<TodolistPage> {
 
                         if (text.isEmpty) {
                           setState(() {
-                            errorText = 'This field can not be empty!';
+                            errorText = 'Este campo não pode estar vazio!';
                           });
                           return;
                         }
@@ -164,7 +164,7 @@ class _TodolistPageState extends State<TodolistPage> {
                   children: [
                     Expanded(
                       child:
-                          Text('Você possui ${todos.length} tarefas pendentes'),
+                          Text('Você possui ${todos.length} tarefas pendentes.'),
                     ),
                     SizedBox(
                       width: 10,
